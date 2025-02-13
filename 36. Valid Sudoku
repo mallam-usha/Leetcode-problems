@@ -1,0 +1,23 @@
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        nr=len(board)
+        nc=len(board[0])
+        r=collections.defaultdict(list)
+        c=collections.defaultdict(list)
+        square=collections.defaultdict(list)
+        for i in range (nr):
+            for j in range(nc):
+                if board[i][j] !=".":
+                    r[i].append(board[i][j])
+                    c[j].append(board[i][j])
+                    square[(i//3,j//3)].append(board[i][j])
+        for k,v in r.items ():
+            if len(v)!= len(set(v)):
+                return False
+        for k,v in c.items ():
+            if len(v)!= len(set(v)):
+                return False
+        for k,v in square.items ():
+            if len(v)!= len(set(v)):
+                return False
+        return True
