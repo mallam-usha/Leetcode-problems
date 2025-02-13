@@ -1,0 +1,11 @@
+class Solution:
+    def minOperations(self, nums: List[int], k: int) -> int:
+        q=list(nums)
+        heapq.heapify(q)
+        c=0
+        while q[0] < k:
+            x = heapq.heappop(q)
+            y = heapq.heappop(q)        
+            heapq.heappush(q,2*min(x,y)+ max(x,y))
+            c+=1
+        return c
