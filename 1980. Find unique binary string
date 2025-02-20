@@ -1,0 +1,19 @@
+class Solution:
+    def findDifferentBinaryString(self, nums: List[str]) -> str:
+        q=collections.deque()
+        q.append('0')
+        q.append('1')
+        n=len(nums)
+        res=[]
+        while q:
+            ele=q.popleft()
+            if n == len(ele):
+                res.append(ele)
+                continue
+            first= ele + '0'
+            second = ele + '1'
+            q.append(first)
+            q.append(second)
+        for ele in res:
+            if ele not in nums:
+                return ele
