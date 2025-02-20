@@ -1,0 +1,31 @@
+# CODE-1
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        def get_next(number):
+            return sum(int(digit)**2 for digit in str(number))
+        s=set()
+        while n!=1 and n not in s:
+            s.add(n)
+            n=get_next(n)
+        return n==1
+
+#CODE- 2
+class Solution:
+    def isHappy(self, n: int) -> bool:
+        v=set()
+        v.add(n)
+        while True:
+            t=0
+            while n:
+                r=n%10
+                t += r*r
+                n //= 10   
+            if t ==1:
+                return True
+            if t in v:
+                return False
+            v.add(t)     
+            n = t
+
+
+        
