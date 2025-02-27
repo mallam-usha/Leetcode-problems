@@ -1,0 +1,13 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        INT_MIN, INT_MAX = -2**31, 2**31 - 1
+        re = 0
+        neg= x < 0
+        x = abs(x)
+        while x != 0:
+            pop = x % 10
+            x //= 10   
+            if re > (INT_MAX - pop) // 10:
+                return 0 
+            re= re* 10 + pop
+        return -re if neg else re
