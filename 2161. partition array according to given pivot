@@ -1,0 +1,14 @@
+class Solution:
+    def pivotArray(self, nums: List[int], pivot: int) -> List[int]:
+        g=[]
+        e=[]
+        l=[]
+        for i in nums:
+            if i >pivot:
+                g.append(i)
+            elif i == pivot:
+                e.append(i)
+            else:
+                l.append(i)
+        return l+e+g
+            
