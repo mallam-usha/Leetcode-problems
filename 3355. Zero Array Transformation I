@@ -1,0 +1,13 @@
+class Solution:
+    def isZeroArray(self, nums: List[int], queries: List[List[int]]) -> bool:
+        n= len(nums)
+        pr=[0] *(n+1)
+        for l,r in queries:
+            pr[l] += 1
+            pr[r+1] -= 1
+        s = 0
+        for i in range(n):
+            s += pr[i]
+            if nums[i] > s:
+                return False
+        return True
