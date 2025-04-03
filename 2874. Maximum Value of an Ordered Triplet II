@@ -1,0 +1,17 @@
+class Solution:
+    def maximumTripletValue(self, nums: List[int]) -> int:
+        n=len(nums)
+        lm=[0]*n
+        rm=[0]*n
+        lm[0] = nums[0]
+        rm[-1] = nums[-1]
+        for i in range(1,n):
+            lm[i] = max(lm[i-1],nums[i])
+        for k in range(n-2,-1,-1):
+            rm[k] = max(rm[k+1],nums[k])
+        r=0
+        for j in range(1,n-1):
+            e=(lm[j-1] - nums[j])* rm[j+1]
+            r=max(r,e)
+        return r
+        
